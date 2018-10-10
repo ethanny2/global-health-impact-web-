@@ -1,0 +1,42 @@
+Systematic Review and Search: An Overview
+Welcome to the systematic review team! The Global Health Impact Project is devoted to measuring pharmaceutical products’ impact on global health to advance access to essential medicines. The systematic review team at GHI is vital to this assessment and conducts a systematic review of various drugs and regimens’ efficacy in treating diseases. First, we conduct a search to find data on drug efficacy for specific diseases and then we enter in the data into spreadsheets created in Excel. We follow a specific methodology in doing this, outlined below.
+In joining the systematic review team, you will be assigned to a group researching efficacious drugs for a particular disease. Diseases we have conducted work for in the past include: HIV, TB, Malaria (P.vivax), Onchocerciasis, Schistosomiasis, Soil Transmitted Helminths (Whipworm, Roundworm, and Hookworm) and Lymphatic Filariasis. Your first steps will be to begin the systematic search. 
+By conducting a systematic search, we follow specific instructions and methodology in finding studies that can provide us with valuable information. We are trying to find every medical article and study conducted world-wide that administered drugs for a particular disease, using several databases. Your group leader will provide you with the drugs of interest and you will follow the instructions (below) in searching for articles. It is important that you follow these steps precisely.
+
+
+
+
+
+
+STEP 1: Scraping Data from Pubmed, Google Scholar and cochrane reviews.
+
+-Need way to extract the specified article from each of the site in a meaningful format, best case: JSON but XML is okay. Raw links to PDF are permissible, but there is no may to programatically extract data from raw PDF with out OCR library. (And the only good pulbic api for OCR is probably Google)
+
+	*Scraping Google Scholar- 
+		1) Google Scholar DOES NOT offer an API to programatically extract data. 
+		2) Could try and create a Beautiful Soup/Python script, but... Google Scholar TOS forbids scraping the service with a script/bot. Even script was made, it makes sure you are not a bot by intermittently giving a CAPTCHA. Then the problem
+		arises; how to solve CAPTCHA with script (nearly impossible) or enter CAPTCHA manually for potentially millions of 
+		records.
+		3) Finally ... this may be the only way to do so, but there exists a Github repo (lastest commit jan 31,2017)
+		(https://github.com/ckreibich/scholar.py) that has a python script that can extract info from google scholar such as
+			-publication title, 
+			-most relevant web link, 
+			-PDF link, 
+			-number of citations, 
+			-number of online versions, 
+			-link to Google Scholar's article cluster for the work, 
+			-Google Scholar's cluster of all works referencing the publication, 
+			-and excerpt of content.
+
+			--> Command-line tool prints entries in CSV format, simple plain text, or in the citation export format. (Comma separated values). Can be opened in Excel
+
+			-->Cookie support for higher query volume, including ability to persist cookies to disk across invocations.
+
+
+
+		-idea: Use this to search relevant terms (in arr), and search through google scholar for them. Bring each link and info of listing into array, along with the text returned from OCR prodecure on text document. Then you have combine the objects into one that has the file meta-data (from the scholar.py script) and the parsed text from Google OCR/image processing.
+
+
+
+		
+
