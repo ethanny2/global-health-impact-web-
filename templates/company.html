@@ -77,7 +77,8 @@
         'chartArea':{top:0},
         legend:'none',
         slices: [{% for row in data1 %}{color: '{{row.2 |safe}}'},{% endfor %}{}],
-        is3D: 'true'
+        is3D: 'true',
+        pieSliceText:'none'
     };
     var data1 = google.visualization.arrayToDataTable([['Company','DALY']{% for row in data2 %},['{{row.0}}',{{row.1}}]{% endfor %}]);
     var options1 = {
@@ -85,7 +86,8 @@
         'chartArea':{top:0},
         legend:'none',
         slices: [{% for row in data2 %}{color: '{{row.2 |safe}}'},{% endfor %}{}],
-        is3D: 'true'
+        is3D: 'true',
+        pieSliceText:'none'
     };
 
     var chart1 = new google.visualization.PieChart(document.getElementById('manupie1'));

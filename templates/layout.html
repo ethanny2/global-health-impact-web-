@@ -68,7 +68,12 @@
     </div>
     <div class="par">
     <div class="frontimg">
-        {% block frontimg %}{% endblock %}
+        {% block frontimg %}
+
+
+
+
+        {% endblock %}
         {% block frontindx %}{% endblock %}
         <script type="text/javascript">
             function navclick(ext) {
@@ -101,7 +106,43 @@
 
         <div class="narrow">
           {% if showindex == 1 %}
-          <div class="col-sm-3" id="navigator">
+         
+
+          {% endif %}
+          {% block content %}
+          {% endblock %}
+        </div>
+        <div class="foot">
+            <table width=100%;>
+                <tr valign="middle">
+                    <td id="contact">CONTACT US</td>
+                    <td class="socialmedia" align="left"><a href="https://www.instagram.com/gblhealthimpact/"><img src="{{ url_for('static',filename='img/socialmedia-01.png') }}" width="30px" /></a></td>
+                    <td class="socialmedia" align="left"><a href="https://twitter.com/GBLHealthImpact"><img src="{{ url_for('static',filename='img/socialmedia-02.png') }}" width="30px" /></a></td>
+                    <td class="socialmedia" align="left"><a href="https://www.facebook.com/GlobalHealthImpactProject"><img src="{{ url_for('static',filename='img/socialmedia-04.png') }}" width="30px" /></a></td>
+                    <td id="ghi">© 2017 GLOBAL HEALTH IMPACT</td>
+                </tr>
+            </table>
+            </div>
+
+        </div>
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- Index code that is the same on every page, currently as is... it is in the incorrect place. Should be on a z-inedx
+  level above the front image with a transparent back ground, NOT next to the pie charts 
+
+
+
+ <div class="col-sm-3" id="navigator">
               <ul style="list-style-type:none;" >
                   <li><p class="indxhead">Index</p></li>
                   <li><a class="hh1" href="/index/country">Country</a></li>
@@ -113,7 +154,6 @@
                           <li><a class="dislist" href="/index/country/2010/malaria#relocation2010">Malaria</a></li>
                           <li><a class="dislist" href="/index/country/2010/tb#relocation2010">TB</a></li>
                           <li><a class="dislist" href="/index/country/2010/hiv#relocation2010">HIV/AIDS</a></li>
-                          <!--<li><a class="dislist" href="/index/country/2010/onchocerciasis#relocation2010">Onchocerciasis</a></li>-->
                           <li><a class="dislist" href="/index/country/2010/schistosomiasis#relocation2010">Schistosomiasis</a></li>
                           <li><a class="dislist" href="/index/country/2010/lf#relocation2010">Lymphatic Filariasis</a></li>
                           <li><a class="dislist" href="/index/country/2010/hookworm#relocation2010">Hookworm</a></li>
@@ -196,7 +236,6 @@
                                   <li><a class="dislist" href="/index/company/patent/2010/malaria#relocation_ph2010">Malaria</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/tb#relocation_ph2010">TB</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/hiv#relocation_ph2010">HIV/AIDS</a></li>
-                                 <!--<li><a class="dislist" href="/index/company/patent/2010/onchocerciasis">Onchocerciasis</a></li>-->
                                   <li><a class="dislist" href="/index/company/patent/2010/schistosomiasis#relocation_ph2010">Schistosomiasis</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/lf#relocation_ph2010">Lymphatic Filariasis</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/hookworm#relocation_ph2010">Hookworm</a></li>
@@ -337,25 +376,4 @@
                   </div>
                   {% endif %}
               </ul>
-          </div>
-
-          {% endif %}
-          {% block content %}
-          {% endblock %}
-        </div>
-        <div class="foot">
-            <table width=100%;>
-                <tr valign="middle">
-                    <td id="contact">CONTACT US</td>
-                    <td class="socialmedia" align="left"><a href="https://www.instagram.com/gblhealthimpact/"><img src="{{ url_for('static',filename='img/socialmedia-01.png') }}" width="30px" /></a></td>
-                    <td class="socialmedia" align="left"><a href="https://twitter.com/GBLHealthImpact"><img src="{{ url_for('static',filename='img/socialmedia-02.png') }}" width="30px" /></a></td>
-                    <td class="socialmedia" align="left"><a href="https://www.facebook.com/GlobalHealthImpactProject"><img src="{{ url_for('static',filename='img/socialmedia-04.png') }}" width="30px" /></a></td>
-                    <td id="ghi">© 2017 GLOBAL HEALTH IMPACT</td>
-                </tr>
-            </table>
-            </div>
-
-        </div>
-    </body>
-
-</html>
+          </div> --> <!--End of class=naivigator block I guess? -->
