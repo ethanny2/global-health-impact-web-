@@ -270,7 +270,6 @@ Of course, some companies may raise their scores by simply acquiring the most ef
             <p class="bluefontlight" style="font-size:26px; !important">Patent Holders’ Total Drug Scores</p>
             <div id="chart_div">
                 {% for comp in patent2 %}
-
                     <div id="" style="padding-top: 2px; font-family: 'Nunito','sans-serif';"><a data-balloon="{{ comp.1 }}" data-balloon-pos="right">{{ comp.0 }}</a>
                     </div>
                     <div style="width: {{ comp.3 }}%;background-color:#{{ comp.2 }};height: 10px;display:inline-block;font-size:0;margin-right:-4px;"></div>
@@ -328,6 +327,9 @@ The impacts of the ranked companies’ drugs is only one of many measures of a c
 Of course, some companies may raise their scores by simply acquiring the most effective drugs for a particular disease (the first prong), and counting on governments and aid organizations to pay inflated prices for them (ignoring the second prong). Thus, for a complete picture, this ranking system must be read in conjunction with others (see Limitations, above).</p>
     </div>
 </div>
+
+
+
 
 {% endif %}
 {% endblock %}

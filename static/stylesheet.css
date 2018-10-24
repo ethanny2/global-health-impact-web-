@@ -118,7 +118,7 @@ body {
   #navigator {
     position: absolute;
     left: -25.5%;
-    /* background: linear-gradient(#d7d2cc,#d7d2cc,#d7d2cc); */
+     background: linear-gradient(#d7d2cc,#d7d2cc,#d7d2cc); 
   }
 }
 
@@ -291,18 +291,14 @@ font-family: 'avenir next regular', sans-serif;
 }
 .contentbox {
     padding: 5px;
-    /*margin-top: 20px; 
-    Misaligns pie chart with paragraph on left
-    once the index was removed */
+    margin-top: 20px;
 }
 .contentresource {
     margin-bottom: 80px !important;
 }
 
 .firstPieChart{
- /*padding: 20px;
- Padding improperly aligned pie chart after index moved*/
-
+ padding: 20px;
 }
 
 .icons {
@@ -448,9 +444,6 @@ font-family: 'avenir next regular', sans-serif;
         width: 80px
     }
 }
-
-
-
 @media only screen and (max-width: 420px) {
     .cap {
         font-size: 8px;
@@ -462,7 +455,6 @@ font-family: 'avenir next regular', sans-serif;
         text-align: left;
         font-family:'avenir next regular', sans-serif;
         padding-left: 30px;
-        font-weight: bold; 
     }
 }
 @media only screen and (min-width: 421px) and (max-width: 599px) {
@@ -477,13 +469,9 @@ font-family: 'avenir next regular', sans-serif;
         text-align: left;
         font-family: 'avenir next regular', sans-serif;
         padding-left: 30px;
-        font-weight: bold; 
 
     }
 }
-
-
-
 @media only screen and (min-width: 600px) and (max-width: 940px) {
     .cap {
         font-size: 14px;
@@ -504,15 +492,12 @@ font-family: 'avenir next regular', sans-serif;
         text-align: left;
         font-family: 'avenir next regular', sans-serif;
         padding-left: 30px;
-
-
     }
     .cap2 {
         font-size: 30px;
         text-align: left;
         font-family:'avenir next regular', sans-serif;
         padding-left: 30px;
-        font-weight: bold; 
     }
 }
 
@@ -528,7 +513,6 @@ font-family: 'avenir next regular', sans-serif;
         text-align: left;
         font-family: 'avenir next regular', sans-serif;
         padding-left: 30px;
-        /*font-weight: bold;*/ 
     }
     .navbtn {
     color: rgba(0,0,0,0.75);
@@ -620,8 +604,8 @@ font-family: 'avenir next regular', sans-serif;
     font-family: 'avenir next regular', sans-serif;
     font-weight: 600;
     font-size: 18px;
-	color:#404040;
-	margin-left: 10px;
+    color:#404040;
+    margin-left: 10px;
 }
 #paperthumb {
     width: 50%;
@@ -881,11 +865,9 @@ font-family: 'avenir next regular', sans-serif;
     [class="firstPieChart"] {
         align: center;
         width: 100%;
-        /* This incorrectly positions the pie chart when the index is placed in the correct postion
-        margin-left: 240px;*/
+        margin-left: 240px;
     }
 }
 svg > g:last-child > g:last-child { pointer-events: none }
 div.google-visualization-tooltip { pointer-events: none }
-
 
