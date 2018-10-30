@@ -4,13 +4,18 @@
 {% endblock %}
 
 {% block frontimg %}
-<img id="back" src="static/img/backgroundimg.jpg" />
 
-<div class="col-sm-4index">
+<!-- Image was not responsive and absolutely positioned before. This is a bootstrap solution to the problem --> 
+        <div class="col-sm-12">
+            <img class="img-fluid" id="back" src="static/img/backgroundimg.png" />
+        </div>
+<!-- <div class="col-sm-4index">
     <span class="cap">An Initiative to</span> <br>
     <span class="cap2"><b>EVALUATE</b> & <b>COMPARE</b></span> <br>
     <span class="cap">Medicines' Global Health Impact</span>
-</div>
+</div> -->
+
+
 
 
 {% endblock %}
@@ -52,7 +57,7 @@
         <div class="contentbox">
             <p class="redtxt">LEARN MORE:</p><br>
             <p class="txtcontent"><b>Check out</b> this video from Binghamton University for a brief presentation on the Global Health Impact project. Professor Nicole Hassoun introduces the Index, some possible uses for it, and explains the insight behind it.</p>
-          <iframe width="100%" height="300" src="https://www.youtube.com/embed/HmZPHqz7xUQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/HmZPHqz7xUQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
     <div class="col-sm-6">

@@ -20,7 +20,7 @@ In that case the navigator is absolutely positoned as the first element of the c
 
 var root_in = null;//Means monitor viewport
 var root_margin_in = "0px"
-var threshold_in = 0.0 //means that when 0% of the target is visible within the element specified by the root option, the callback is invoked.
+var threshold_in = 1.0 //means that when 0% of the target is visible within the element specified by the root option, the callback is invoked.
 var width_break_point = 768; // Navigator is not sticky if width is less than this value
 
 options = {
@@ -59,22 +59,27 @@ function stickyNavigation(entries, observer){
 	 nav_elem = document.querySelector("#navigator");
 	 if(width > 768){
 	 	entries.forEach(function(entry){
-	 		if(entry.intersectionRatio > 0 && entry.intersectionRatio <= .2){
+	 		//If picture leaves user viewport 
+	 		if(entry.intersectionRatio > 0 ){
+	 			console.log("Intersection ratio of #fore is (in applying default nav style) " + entry.intersectionRatio);
+	 			//Apply default styling, is this redunant, need to look at the implications of this later 
+	 			//entry.target.setAttribute("style","position:absolute; left:-23.5%; margin: 0 auto; top:1.1%;");	
+	 			nav_elem.setAttribute("style","position:absolute; left:-30.5%; margin: 0 auto; top:1.1%;");
+	 		//If picture re-enters user viewport
+	 		}else if(entry.intersectionRatio < 0){
 	 			console.log("Intersection ratio of #fore is " + entry.intersectionRatio);
 	 			//entry.target.setAttribute("style","position:fixed; left:-3%; max-width:15%; top:22%;");
 	 			nav_elem.setAttribute("style","position:fixed; left:-1%; max-width:15%; top:22%;");
 	 			console.log(entry);
 	 			console.log("Successfully changed navigtors CSS properties!");
-	 			//This needs to be changed
-	 		}else if(entry.intersectionRatio > .3){
-	 			console.log("Intersection ratio of #fore is (in applying default nav style) " + entry.intersectionRatio);
-	 			//Apply default styling, is this redunant, need to look at the implications of this later 
-	 			//entry.target.setAttribute("style","position:absolute; left:-23.5%; margin: 0 auto; top:1.1%;");	
-	 			nav_elem.setAttribute("style","position:absolute; left:-23.5%; margin: 0 auto; top:1.1%;");
 	 		}
 	 	});
 	 }
 }
 
+
+/* 
+	The header/ top heading bar is always 85px, how is that calculated?
+*/
    	
     

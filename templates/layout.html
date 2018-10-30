@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="eng">
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-        <link rel="icon" href="{{ url_for('static',filename='img/logo.png') }}">
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% block title %}{% endblock %}
-        <link href="{{ url_for('static',filename='stylesheet.css') }}" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <!-- Bootstrap JavaScript -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="icon" href="{{ url_for('static',filename='img/logo.png') }}">
+  <!-- Adding new font to header because I don't know 
+    where the original font 'avenir next bold' is located and when I looked online it cost money -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-        <script src="//datamaps.github.io/scripts/0.4.4/datamaps.world.min.js"></script>
-        <script type="text/javascript" src="{{ url_for('static',filename='js/layout.js') }}"></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  {% block title %}{% endblock %}
+  <link href="{{ url_for('static',filename='stylesheet.css') }}" rel="stylesheet">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  <script src="//datamaps.github.io/scripts/0.4.4/datamaps.world.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/layout.js') }}"></script>
 
         <!-- Small polyfil library for the Intersection Observer API. This API provides a way to observe
           changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
           Very small impact on load time and is more efficient than doing the same function in javascript and/or JQuery. The polyfil to give this API support in all browsers including IE. -->
-        <script src="../static/js/intersection-observer-test.js"></script>
+          <script src="../static/js/intersection-observer-test.js"></script>
         <!-- Including script that makes it so that when the user scrolls past a certain threshold with scroll bar 
           the navigation will have a fixed position -->
-        <script src= "../static/js/intersectionObserverInteractions.js"></script>
+          <script src= "../static/js/intersectionObserverInteractions.js"></script>
 
-        {% if indexCountry == true %}
-        <script type="text/javascript" src="{{ url_for('static',filename='js/country.js') }}">
+          {% if indexCountry == true %}
+          <script type="text/javascript" src="{{ url_for('static',filename='js/country.js') }}">
 
-        </script>
+          </script>
 
-        {% endif %}
-        {% block extrajs %}{% endblock %}
-        <script>
+          {% endif %}
+          {% block extrajs %}{% endblock %}
+          <script>
             var map = new Datamap({element: document.getElementById('mapcontainer')});
-        </script>
+          </script>
 
-        <script>
+          <script>
             /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 
-        </script>
+          </script>
 
 
-    </head>
-    <body >
-    <div id="wholepage">
-    <div id="top">
+        </head>
+        <body >
+          <div id="wholepage">
+
+            <!-- This Top navigation bar is NOT REPSONSIVE. If you already included the CDN for bootstrap why not use it... -->
+   <!--  <div id="top">
         <a href="/"><img class="logo" src="{{ url_for('static',filename='img/logo.png') }}" alt="Global Health Impact" width="100px" /></a>
         <div id="buttons">
         <div class="dropdown">
@@ -74,9 +82,28 @@
         </div>
             <button id="home" onclick="location.href='http://http://127.0.0.1:5000/'" class="navbtn">HOME</button>
         </div>
-    </div>
-    <div class="par">
-    <div class="frontimg">
+      </div> -->
+
+      <!--NEW REPSPONISVE HEADER IMPLEMENTATION Using bootstrap 3! -->
+      <nav class="navbar navbar-default navbar-fixed-top" id="header_nav">
+        <div class="container-fluid" id="header_container">
+          <div class="navbar-header" id="logo_container">
+            <a class="navbar-brand" href="#">
+              <img class="img-fluid" id="header_img" alt="Brand" src="../static/img/logo.png">
+            </a>
+          </div>
+          <!-- Menu Items -->
+          <ul class="nav navbar-nav navbar-right" id="header_list">
+            <li ><a href="#">Home</a></li>
+            <li><a href="#">Index</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </nav>
+    <!-- END NEW RESPONSIVE HEADER IMPLEMENTATION -->
+  <!--   <div class="par"> -->
+    <div class="container-fluid no-padding">
+    <div class="row" class="banner_img">
         {% block frontimg %}{% endblock %}
         {% block frontindx %}{% endblock %}
         <script type="text/javascript">
@@ -128,11 +155,11 @@
                           <li><a class="dislist" href="/index/country/2010/hookworm#relocation2010">Hookworm</a></li>
                           <li><a class="dislist" href="/index/country/2010/roundworm#relocation2010">Roundworm</a></li>
                           <li><a class="dislist" href="/index/country/2010/whipworm#relocation2010">Whipworm</a></li>
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('country2013','country2010','country2015')" class="yearbutton">2013</a>
-                  <div class="subnavdiv" id="country2013">
-                      <ul style="list-style-type:none;">
+                        </ul>
+                      </div><br>
+                      <a href="#relocation" onclick="new_yearclick('country2013','country2010','country2015')" class="yearbutton">2013</a>
+                      <div class="subnavdiv" id="country2013">
+                        <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/country/2013/all#relocation2013">All</a></li>
                           <li><a class="dislist" href="/index/country/2013/malaria#relocation2013">Malaria</a></li>
                           <li><a class="dislist" href="/index/country/2013/tb#relocation2013">TB</a></li>
@@ -144,11 +171,11 @@
                           <li><a class="dislist" href="/index/country/2013/roundworm#relocation2013">Roundworm</a></li>
                           <li><a class="dislist" href="/index/country/2013/whipworm#relocation2013">Whipworm</a></li>
 
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('country2015','country2010','country2013')" class="yearbutton">2015</a>
-                  <div class="subnavdiv" id="country2015">
-                      <ul style="list-style-type:none;">
+                        </ul>
+                      </div><br>
+                      <a href="#relocation" onclick="new_yearclick('country2015','country2010','country2013')" class="yearbutton">2015</a>
+                      <div class="subnavdiv" id="country2015">
+                        <ul style="list-style-type:none;">
                           <li><a class="dislist" href="/index/country/2015/all#relocation2015">All</a></li>
                           <li><a class="dislist" href="/index/country/2015/malaria#relocation2015">Malaria</a></li>
                           <li><a class="dislist" href="/index/country/2015/tb#relocation2015">TB</a></li>
@@ -160,62 +187,62 @@
                           <li><a class="dislist" href="/index/country/2015/roundworm#relocation2015">Roundworm</a></li>
                           <li><a class="dislist" href="/index/country/2015/whipworm#relocation2015">Whipworm</a></li>
 
-                      </ul>
-                  </div>
-                  {% endif %}
-                  <li><a class="hh1" href="/index/company">Company</a></li>
-                  {% if navsub == 2 %}
-                  <ul class="compsublist">
-                      <li><a href="#relocation" onclick="yearclick('manunav','patentnav')" class="compsub">Manufacturer</a>
-                      <div id="manunav"{% if comptype == 1 %} style="display:none"{% endif %}>
-                          <a href="#relocation" onclick="new_yearclick('manu2010','manu2013','manu2015')" class="yearbutton">2010</a>
-                          <div class="subnavdiv" id="manu2010">
+                        </ul>
+                      </div>
+                      {% endif %}
+                      <li><a class="hh1" href="/index/company">Company</a></li>
+                      {% if navsub == 2 %}
+                      <ul class="compsublist">
+                        <li><a href="#relocation" onclick="yearclick('manunav','patentnav')" class="compsub">Manufacturer</a>
+                          <div id="manunav"{% if comptype == 1 %} style="display:none"{% endif %}>
+                            <a href="#relocation" onclick="new_yearclick('manu2010','manu2013','manu2015')" class="yearbutton">2010</a>
+                            <div class="subnavdiv" id="manu2010">
                               <ul style="list-style-type:none;">
-                                  <li><a class="dislist" href="/index/company/manufacturer/2010/all#relocation_manu2010">All</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2010/malaria#relocation_manu2010">Malaria</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2010/tb#relocation_manu2010">TB</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2010/hiv#relocation_manu2010">HIV/AIDS</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2010/all#relocation_manu2010">All</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2010/malaria#relocation_manu2010">Malaria</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2010/tb#relocation_manu2010">TB</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2010/hiv#relocation_manu2010">HIV/AIDS</a></li>
                               </ul>
-                          </div><br>
-                          <a href="#relocation" onclick="new_yearclick('manu2013','manu2010', 'manu2015')" class="yearbutton">2013</a>
-                          <div class="subnavdiv" id="manu2013">
+                            </div><br>
+                            <a href="#relocation" onclick="new_yearclick('manu2013','manu2010', 'manu2015')" class="yearbutton">2013</a>
+                            <div class="subnavdiv" id="manu2013">
                               <ul style="list-style-type:none;">
-                                  <li><a class="dislist" href="/index/company/manufacturer/2013/all#relocation_manu2013">All</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2013/malaria#relocation_manu2013">Malaria</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2013/tb#relocation_manu2013">TB</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2013/hiv#relocation_manu2013">HIV/AIDS</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2013/all#relocation_manu2013">All</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2013/malaria#relocation_manu2013">Malaria</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2013/tb#relocation_manu2013">TB</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2013/hiv#relocation_manu2013">HIV/AIDS</a></li>
                               </ul>
-                          </div><br>
-                          <a href="#relocation" onclick="new_yearclick('manu2015','manu2010', 'manu2013')" class="yearbutton">2015</a>
-                          <div class="subnavdiv" id="manu2015">
+                            </div><br>
+                            <a href="#relocation" onclick="new_yearclick('manu2015','manu2010', 'manu2013')" class="yearbutton">2015</a>
+                            <div class="subnavdiv" id="manu2015">
                               <ul style="list-style-type:none;">
-                                  <li><a class="dislist" href="/index/company/manufacturer/2015/all#relocation_manu2015">All</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2015/malaria#relocation_manu2015">Malaria</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2015/tb#relocation_manu2015">TB</a></li>
-                                  <li><a class="dislist" href="/index/company/manufacturer/2015/hiv#relocation_manu2015">HIV/AIDS</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2015/all#relocation_manu2015">All</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2015/malaria#relocation_manu2015">Malaria</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2015/tb#relocation_manu2015">TB</a></li>
+                                <li><a class="dislist" href="/index/company/manufacturer/2015/hiv#relocation_manu2015">HIV/AIDS</a></li>
                               </ul>
-                          </div>
-                      </div></li>
-                      <li><a href="#relocation" onclick="yearclick('patentnav','manunav')" class="compsub">Patent Holder</a>
-                      <div id="patentnav"{% if comptype == 0 %} style="display:none"{% endif %}>
-                          <a href="#relocation" onclick="new_yearclick('patent2010','patent2013','patent2015')" class="yearbutton">2010</a>
-                          <div class="subnavdiv" id="patent2010">
-                              <ul style="list-style-type:none;">
+                            </div>
+                          </div></li>
+                          <li><a href="#relocation" onclick="yearclick('patentnav','manunav')" class="compsub">Patent Holder</a>
+                            <div id="patentnav"{% if comptype == 0 %} style="display:none"{% endif %}>
+                              <a href="#relocation" onclick="new_yearclick('patent2010','patent2013','patent2015')" class="yearbutton">2010</a>
+                              <div class="subnavdiv" id="patent2010">
+                                <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/patent/2010/all#relocation_ph2010">All</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/malaria#relocation_ph2010">Malaria</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/tb#relocation_ph2010">TB</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/hiv#relocation_ph2010">HIV/AIDS</a></li>
-                                 <!--<li><a class="dislist" href="/index/company/patent/2010/onchocerciasis">Onchocerciasis</a></li>-->
+                                  <!--<li><a class="dislist" href="/index/company/patent/2010/onchocerciasis">Onchocerciasis</a></li>-->
                                   <li><a class="dislist" href="/index/company/patent/2010/schistosomiasis#relocation_ph2010">Schistosomiasis</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/lf#relocation_ph2010">Lymphatic Filariasis</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/hookworm#relocation_ph2010">Hookworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/roundworm#relocation_ph2010">Roundworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2010/whipworm#relocation_ph2010">Whipworm</a></li>
-                              </ul>
-                          </div><br>
-                          <a href="#relocation" onclick="new_yearclick('patent2013','patent2010','patent2015')" class="yearbutton">2013</a>
-                          <div class="subnavdiv" id="patent2013">
-                              <ul style="list-style-type:none;">
+                                </ul>
+                              </div><br>
+                              <a href="#relocation" onclick="new_yearclick('patent2013','patent2010','patent2015')" class="yearbutton">2013</a>
+                              <div class="subnavdiv" id="patent2013">
+                                <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/patent/2013/all#relocation_ph2013">All</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/malaria#relocation_ph2013">Malaria</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/tb#relocation_ph2013">TB</a></li>
@@ -226,11 +253,11 @@
                                   <li><a class="dislist" href="/index/company/patent/2013/hookworm#relocation_ph2013">Hookworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/roundworm#relocation_ph2013">Roundworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2013/whipworm#relocation_ph2013">Whipworm</a></li>
-                              </ul>
-                          </div><br>
-                          <a href="#relocation" onclick="new_yearclick('patent2015','patent2010','patent2013')" class="yearbutton">2015</a>
-                          <div class="subnavdiv" id="patent2015">
-                              <ul style="list-style-type:none;">
+                                </ul>
+                              </div><br>
+                              <a href="#relocation" onclick="new_yearclick('patent2015','patent2010','patent2013')" class="yearbutton">2015</a>
+                              <div class="subnavdiv" id="patent2015">
+                                <ul style="list-style-type:none;">
                                   <li><a class="dislist" href="/index/company/patent/2015/all#relocation_ph2015">All</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2015/malaria#relocation_ph2015">Malaria</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2015/tb#relocation_ph2015">TB</a></li>
@@ -241,130 +268,130 @@
                                   <li><a class="dislist" href="/index/company/patent/2015/hookworm#relocation_ph2015">Hookworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2015/roundworm#relocation_ph2015">Roundworm</a></li>
                                   <li><a class="dislist" href="/index/company/patent/2015/whipworm#relocation_ph2015">Whipworm</a></li>
-                              </ul>
+                                </ul>
+                              </div>
+
+                            </div></li>
+                          </ul>
+                          {% endif %}
+                          <li><a class="hh1" href="/index/drug">Drug</a></li>
+                          {% if navsub == 3 %}
+                          <a href="#relocation" onclick="new_yearclick('drug2010','drug2013','drug2015')" class="yearbutton">2010</a>
+                          <div class="subnavdiv" id="drug2010">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/drug/2010/all#relocation_drug2010">All</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/malaria#relocation_drug2010">Malaria</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/tb#relocation_drug2010">TB</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/hiv#relocation_drug2010">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/schistosomiasis#relocation_drug2010">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/lf#relocation_drug2010">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/hookworm#relocation_drug2010">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/roundworm#relocation_drug2010">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2010/whipworm#relocation_drug2010">Whipworm</a></li>
+                            </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('drug2013','drug2010','drug2015')" class="yearbutton">2013</a>
+                          <div class="subnavdiv" id="drug2013">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/drug/2013/all#relocation_drug2013">All</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/malaria#relocation_drug2013">Malaria</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/tb#relocation_drug2013">TB</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/hiv#relocation_drug2013">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/onchocerciasis#relocation_drug2013">Onchocerciasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/schistosomiasis#relocation_drug2013">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/lf#relocation_drug2013">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/hookworm#relocation_drug2013">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/roundworm#relocation_drug2013">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2013/whipworm#relocation_drug2013">Whipworm</a></li>
+                            </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('drug2015','drug2013','drug2010')" class="yearbutton">2015</a>
+                          <div class="subnavdiv" id="drug2015">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/drug/2015/all#relocation_drug2015">All</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/malaria#relocation_drug2015">Malaria</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/tb#relocation_drug2015">TB</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/hiv#relocation_drug2015">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/onchocerciasis#relocation_drug2015">Onchocerciasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/schistosomiasis#relocation_drug2015">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/lf#relocation_drug2015">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/hookworm#relocation_drug2015">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/roundworm#relocation_drug2015">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/drug/2015/whipworm#relocation_drug2015">Whipworm</a></li>
+                            </ul>
                           </div>
+                          {% endif %}
+                          <li><a class="hh1" href="/index/disease">Disease</a></li>
+                          {% if navsub == 4 %}
+                          <a href="#relocation" onclick="new_yearclick('disease2010','disease2013','disease2015')" class="yearbutton">2010</a>
+                          <div class="subnavdiv" id="disease2010">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/disease/2010/summary#relocation_disease2010">Summary</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/all#relocation_disease2010">All</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/malaria#relocation_disease2010">Malaria</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/tb#relocation_disease2010">TB</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/hiv#relocation_disease2010">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/onchocerciasis#relocation_disease2010">Onchocerciasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/schistosomiasis#relocation_disease2010">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/lf#relocation_disease2010">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/hookworm#relocation_disease2010">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/roundworm#relocation_disease2010">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2010/whipworm#relocation_disease2010">Whipworm</a></li>
+                            </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('disease2013','disease2010','disease2015')" class="yearbutton">2013</a>
+                          <div class="subnavdiv" id="disease2013">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/disease/2013/summary#relocation_disease2013">Summary</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/all#relocation_disease2013">All</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/malaria#relocation_disease2013">Malaria</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/tb#relocation_disease2013">TB</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/hiv#relocation_disease2013">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/onchocerciasis#relocation_disease2013">Onchocerciasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/schistosomiasis#relocation_disease2013">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/lf#relocation_disease2013">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/hookworm#relocation_disease2013">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/roundworm#relocation_disease2013">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2013/whipworm#relocation_disease2013">Whipworm</a></li>
+                            </ul>
+                          </div><br>
+                          <a href="#relocation" onclick="new_yearclick('disease2015','disease2013','disease2010')" class="yearbutton">2015</a>
+                          <div class="subnavdiv" id="disease2015">
+                            <ul style="list-style-type:none;">
+                              <li><a class="dislist" href="/index/disease/2015/summary#relocation_disease2015">Summary</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/all#relocation_disease2015">All</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/malaria#relocation_disease2015">Malaria</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/tb#relocation_disease2015">TB</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/hiv#relocation_disease2015">HIV/AIDS</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/onchocerciasis#relocation_disease2015">Onchocerciasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/schistosomiasis#relocation_disease2015">Schistosomiasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/lf#relocation_disease2015">Lymphatic Filariasis</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/hookworm#relocation_disease2015">Hookworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/roundworm#relocation_disease2015">Roundworm</a></li>
+                              <li><a class="dislist" href="/index/disease/2015/whipworm#relocation_disease2015">Whipworm</a></li>
+                            </ul>
+                          </div>
+                          {% endif %}
+                        </ul>
+                      </div>
 
-                      </div></li>
-                  </ul>
-                  {% endif %}
-                  <li><a class="hh1" href="/index/drug">Drug</a></li>
-                  {% if navsub == 3 %}
-                  <a href="#relocation" onclick="new_yearclick('drug2010','drug2013','drug2015')" class="yearbutton">2010</a>
-                  <div class="subnavdiv" id="drug2010">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/drug/2010/all#relocation_drug2010">All</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/malaria#relocation_drug2010">Malaria</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/tb#relocation_drug2010">TB</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/hiv#relocation_drug2010">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/schistosomiasis#relocation_drug2010">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/lf#relocation_drug2010">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/hookworm#relocation_drug2010">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/roundworm#relocation_drug2010">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2010/whipworm#relocation_drug2010">Whipworm</a></li>
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('drug2013','drug2010','drug2015')" class="yearbutton">2013</a>
-                  <div class="subnavdiv" id="drug2013">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/drug/2013/all#relocation_drug2013">All</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/malaria#relocation_drug2013">Malaria</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/tb#relocation_drug2013">TB</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/hiv#relocation_drug2013">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/onchocerciasis#relocation_drug2013">Onchocerciasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/schistosomiasis#relocation_drug2013">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/lf#relocation_drug2013">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/hookworm#relocation_drug2013">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/roundworm#relocation_drug2013">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2013/whipworm#relocation_drug2013">Whipworm</a></li>
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('drug2015','drug2013','drug2010')" class="yearbutton">2015</a>
-                  <div class="subnavdiv" id="drug2015">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/drug/2015/all#relocation_drug2015">All</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/malaria#relocation_drug2015">Malaria</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/tb#relocation_drug2015">TB</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/hiv#relocation_drug2015">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/onchocerciasis#relocation_drug2015">Onchocerciasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/schistosomiasis#relocation_drug2015">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/lf#relocation_drug2015">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/hookworm#relocation_drug2015">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/roundworm#relocation_drug2015">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/drug/2015/whipworm#relocation_drug2015">Whipworm</a></li>
-                      </ul>
+                      {% endif %}
+                      {% block content %}
+                      {% endblock %}
+                    </div>
+                    <div class="foot">
+                      <table width=100%;>
+                        <tr valign="middle">
+                          <td id="contact">CONTACT US</td>
+                          <td class="socialmedia" align="left"><a href="https://www.instagram.com/gblhealthimpact/"><img src="{{ url_for('static',filename='img/socialmedia-01.png') }}" width="30px" /></a></td>
+                          <td class="socialmedia" align="left"><a href="https://twitter.com/GBLHealthImpact"><img src="{{ url_for('static',filename='img/socialmedia-02.png') }}" width="30px" /></a></td>
+                          <td class="socialmedia" align="left"><a href="https://www.facebook.com/GlobalHealthImpactProject"><img src="{{ url_for('static',filename='img/socialmedia-04.png') }}" width="30px" /></a></td>
+                          <td id="ghi">© 2017 GLOBAL HEALTH IMPACT</td>
+                        </tr>
+                      </table>
+                    </div>
+
                   </div>
-                  {% endif %}
-                  <li><a class="hh1" href="/index/disease">Disease</a></li>
-                  {% if navsub == 4 %}
-                  <a href="#relocation" onclick="new_yearclick('disease2010','disease2013','disease2015')" class="yearbutton">2010</a>
-                  <div class="subnavdiv" id="disease2010">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/disease/2010/summary#relocation_disease2010">Summary</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/all#relocation_disease2010">All</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/malaria#relocation_disease2010">Malaria</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/tb#relocation_disease2010">TB</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/hiv#relocation_disease2010">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/onchocerciasis#relocation_disease2010">Onchocerciasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/schistosomiasis#relocation_disease2010">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/lf#relocation_disease2010">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/hookworm#relocation_disease2010">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/roundworm#relocation_disease2010">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2010/whipworm#relocation_disease2010">Whipworm</a></li>
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('disease2013','disease2010','disease2015')" class="yearbutton">2013</a>
-                  <div class="subnavdiv" id="disease2013">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/disease/2013/summary#relocation_disease2013">Summary</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/all#relocation_disease2013">All</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/malaria#relocation_disease2013">Malaria</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/tb#relocation_disease2013">TB</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/hiv#relocation_disease2013">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/onchocerciasis#relocation_disease2013">Onchocerciasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/schistosomiasis#relocation_disease2013">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/lf#relocation_disease2013">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/hookworm#relocation_disease2013">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/roundworm#relocation_disease2013">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2013/whipworm#relocation_disease2013">Whipworm</a></li>
-                      </ul>
-                  </div><br>
-                  <a href="#relocation" onclick="new_yearclick('disease2015','disease2013','disease2010')" class="yearbutton">2015</a>
-                  <div class="subnavdiv" id="disease2015">
-                      <ul style="list-style-type:none;">
-                          <li><a class="dislist" href="/index/disease/2015/summary#relocation_disease2015">Summary</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/all#relocation_disease2015">All</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/malaria#relocation_disease2015">Malaria</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/tb#relocation_disease2015">TB</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/hiv#relocation_disease2015">HIV/AIDS</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/onchocerciasis#relocation_disease2015">Onchocerciasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/schistosomiasis#relocation_disease2015">Schistosomiasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/lf#relocation_disease2015">Lymphatic Filariasis</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/hookworm#relocation_disease2015">Hookworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/roundworm#relocation_disease2015">Roundworm</a></li>
-                          <li><a class="dislist" href="/index/disease/2015/whipworm#relocation_disease2015">Whipworm</a></li>
-                      </ul>
-                  </div>
-                  {% endif %}
-              </ul>
-          </div>
+                </body>
 
-          {% endif %}
-          {% block content %}
-          {% endblock %}
-        </div>
-        <div class="foot">
-            <table width=100%;>
-                <tr valign="middle">
-                    <td id="contact">CONTACT US</td>
-                    <td class="socialmedia" align="left"><a href="https://www.instagram.com/gblhealthimpact/"><img src="{{ url_for('static',filename='img/socialmedia-01.png') }}" width="30px" /></a></td>
-                    <td class="socialmedia" align="left"><a href="https://twitter.com/GBLHealthImpact"><img src="{{ url_for('static',filename='img/socialmedia-02.png') }}" width="30px" /></a></td>
-                    <td class="socialmedia" align="left"><a href="https://www.facebook.com/GlobalHealthImpactProject"><img src="{{ url_for('static',filename='img/socialmedia-04.png') }}" width="30px" /></a></td>
-                    <td id="ghi">© 2017 GLOBAL HEALTH IMPACT</td>
-                </tr>
-            </table>
-            </div>
-
-        </div>
-    </body>
-
-</html>
+                </html>
